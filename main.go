@@ -10,6 +10,7 @@ import (
 	"math"
 	"math/rand"
 	"os"
+	"strings"
 )
 
 const (
@@ -227,20 +228,22 @@ func initWorld() {
 }
 
 func drawWorld(command string) {
+	command = strings.Replace(command, "\r", "", -1)
+	command = strings.Replace(command, "\n", "", -1)
 	switch command {
-	case "a\n":
+	case "a":
 		fmt.Println("move left")
 		ActiveObject.ShiftLeft()
 		break
-	case "d\n":
+	case "d":
 		fmt.Println("move right")
 		ActiveObject.ShiftRight()
 		break
-	case "w\n":
+	case "w":
 		fmt.Println("rotate cw")
 		ActiveObject.RotateCW()
 		break
-	case "s\n":
+	case "s":
 		fmt.Println("rotate ccw")
 		ActiveObject.RotateCCW()
 		break
